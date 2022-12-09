@@ -16,7 +16,7 @@ def create_app():
     from sklearn.tree import DecisionTreeClassifier
     from sklearn.linear_model import LogisticRegression
 
-    data = pd.read_csv("static\data.csv")
+    data = pd.read_csv("static/data.csv")
     label_encoder = LabelEncoder()
     data["Label"] = label_encoder.fit_transform(data["Hazardous"]) 
     categories = list(label_encoder.inverse_transform([0, 1]))
@@ -36,7 +36,7 @@ def create_app():
 
     app=Flask(__name__)
     app.db=client.capstone
-    SESSION_TYPE = 'filesystem'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.config.from_object(__name__)
     Session(app)
 
