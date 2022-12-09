@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Capstone Project</title>
+</head>
+<body>
+    <div class="container py-2 rounded-4" style="background-image:url('../static/Picture4.jpg');">
+    <h1 class="bg-danger text-center m-3 px-6 py-3 rounded-4">Hazardous Asteroid Prediction using Majority Voting Technique</h1>
+    <p class="text-end">
+        <a href="{{url_for('home')}}" class="btn btn-primary px-4 ms-5 me-3">Go Home</a>
+        <a href="{{url_for('details')}}" class="btn btn-primary px-4 ms-5 me-3">Details</a>
+        <a href="{{url_for('logout')}}" class="btn btn-primary px-4 ms-5 me-3">Logout</a>
+    </p>
+    <form class="form" action="/predict" method="POST">
+        <table class="table table-striped mx-auto table-bordered border-dark" style="width:85%;">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Lowest</th>
+                    <th>Highest</th>
+                    <th>Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        <label for="a" class="form__label">Absolute Magnitude</label>
+                    </th>
+                    <td>11.16</td>
+                    <td>32.1</td>
+                    <td><input type="text" name="a" id="a" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="b" class="form__label">Minimum Diameter in Meters</label>
+                    </th>
+                    <td>1.010543415</td>
+                    <td>15579.55241</td>
+                    <td><input type="text" name="b" id="b" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="c" class="form__label">Speed in MPH</label>
+                    </th>
+                    <td>750.4891485</td>
+                    <td>99841.227830</td>
+                    <td><input type="text" name="c" id="c" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="d" class="form__label">Miss Distance in KM</label>
+                    </th>
+                    <td>26609.88672</td>
+                    <td>74781600</td>
+                    <td><input type="text" name="d" id="d" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="e" class="form__label">Orbit Uncertainity</label>
+                    </th>
+                    <td>0</td>
+                    <td>9</td>
+                    <td><input type="text" name="e" id="e" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="f" class="form__label">Minimum Orbit Intersection</label>
+                    </th>
+                    <td>0.00000206</td>
+                    <td>0.477891</td>
+                    <td><input type="text" name="f" id="f" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="g" class="form__label">Jupiter Tisserand Invariant</label>
+                    </th>
+                    <td>2.196</td>
+                    <td>9.025</td>
+                    <td><input type="text" name="g" id="g" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="h" class="form__label">Epoch Osculation</label>
+                    </th>
+                    <td>2450164.5</td>
+                    <td>2458019.5</td>
+                    <td><input type="text" name="h" id="h" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="i" class="form__label">Eccentricity</label>
+                    </th>
+                    <td>0.007522355</td>
+                    <td>0.960260724</td>
+                    <td><input type="text" name="i" id="i" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="j" class="form__label">Semi Major Axis</label>
+                    </th>
+                    <td>0.615920427</td>
+                    <td>5.072008464</td>
+                    <td><input type="text" name="j" id="j" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="k" class="form__label">Inclination</label>
+                    </th>
+                    <td>0.014512943</td>
+                    <td>75.40666684</td>
+                    <td><input type="text" name="k" id="k" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="l" class="form__label">Asc. Node Longitude</label>
+                    </th>
+                    <td>0.001940674</td>
+                    <td>359.9058899</td>
+                    <td><input type="text" name="l" id="l" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="m" class="form__label">Orbital Period</label>
+                    </th>
+                    <td>176.5571614</td>
+                    <td>4172.231343</td>
+                    <td><input type="text" name="m" id="m" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="n" class="form__label">Perihelion Distance</label>
+                    </th>
+                    <td>0.080744296</td>
+                    <td>1.29983165</td>
+                    <td><input type="text" name="n" id="n" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="o" class="form__label">Perihelion Arg</label>
+                    </th>
+                    <td>0.006917625</td>
+                    <td>359.9930979</td>
+                    <td><input type="text" name="o" id="o" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="p" class="form__label">Aphelion Distance</label>
+                    </th>
+                    <td>0.803765251</td>
+                    <td>8.983851552</td>
+                    <td><input type="text" name="p" id="p" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="q" class="form__label">Perihelion Time</label>
+                    </th>
+                    <td>2450100.317</td>
+                    <td>2458838.86</td>
+                    <td><input type="text" name="q" id="q" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="r" class="form__label">Mean Anomaly</label>
+                    </th>
+                    <td>0.003191491</td>
+                    <td>359.9179906</td>
+                    <td><input type="text" name="r" id="r" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="s" class="form__label">Mean Motion</label>
+                    </th>
+                    <td>0.086284765</td>
+                    <td>2.038999705</td>
+                    <td><input type="text" name="s" id="s" class="form__text rounded-3 col-12 px-2"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <button type="submit" class="form__submit btn btn-success my-4 px-3">Predict</button>
+        </div>
+    </form>
+
+    <h1 class="w-50 mx-auto text-center bg-light p-4 m-3 rounded-4"> {{str}}</h1>
+    </div>
+</body>
+</html>
