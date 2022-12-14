@@ -125,7 +125,10 @@ def create_app():
                     return render_template("predict.html", str="One/More Fields are Empty.")
 
             for i in arr:
-                i=float(i)
+                try:
+                    i=float(i)
+                except ValueError:
+                    return render_template("predict.html",str="Please enter numbers.")
 
             X_t.loc[len(X_t.index)]=arr
             sc = scaler.transform(X_t)
